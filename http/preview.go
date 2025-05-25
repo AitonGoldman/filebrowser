@@ -112,8 +112,9 @@ func handleVideoPreview(
 		// Try ffmpeg with hardware acceleration first
 		ffmpegArgs := []string{
 			"-y", "-hwaccel", hwAccel, "-i", path,
-			"-vf", "thumbnail,crop=w='min(iw,ih)':h='min(iw,ih)',scale=128:128",
-			"-quality", "40", "-frames:v", "1", "-c:v", "webp", "-f", "image2pipe", "-",
+			//"-vf", "thumbnail,crop=w='min(iw,ih)':h='min(iw,ih)',scale=128:128",
+			"-vf", "thumbnail,scale=128:128",
+			"-quality", "40", "-frames:v", "450", "-c:v", "webp", "-f", "image2pipe", "-",
 		}
 
 		resizedImage, err = runFFmpeg(ctx, ffmpegArgs)
