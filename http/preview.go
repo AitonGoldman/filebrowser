@@ -113,8 +113,8 @@ func handleVideoPreview(
 		ffmpegArgs := []string{
 			"-y", "-hwaccel", hwAccel, "-i", path,
 			//"-vf", "thumbnail,crop=w='min(iw,ih)':h='min(iw,ih)',scale=128:128",
-			"-ss","15","-vf", "scale=128:128",
-			"-quality", "40", "-frames:v", "150", "-c:v", "webp", "-f", "image2pipe", "-",
+			"-ss","15","-vf", "scale=320:240",
+			"-quality", "100", "-frames:v", "1", "-c:v", "webp", "-f", "image2pipe", "-",
 		}
 
 		resizedImage, err = runFFmpeg(ctx, ffmpegArgs)
@@ -124,8 +124,8 @@ func handleVideoPreview(
 			// Retry without hardware acceleration
 			ffmpegArgs = []string{
 				"-y", "-i", path,				
-				"-ss","15","-vf", "scale=128:128",
-				"-quality", "40", "-frames:v", "150", "-c:v", "webp", "-f", "image2pipe", "-",
+				"-ss","15","-vf", "scale=320:240",
+				"-quality", "100", "-frames:v", "1", "-c:v", "webp", "-f", "image2pipe", "-",
 			}
 			resizedImage, err = runFFmpeg(ctx, ffmpegArgs)
 			if err != nil {
