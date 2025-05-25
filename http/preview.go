@@ -114,7 +114,7 @@ func handleVideoPreview(
 			"-y", "-hwaccel", hwAccel, "-i", path,
 			//"-vf", "thumbnail,crop=w='min(iw,ih)':h='min(iw,ih)',scale=128:128",
 			"-vf", "thumbnail,scale=128:128",
-			"-quality", "40", "-frames:v", "450", "-c:v", "webp", "-f", "image2pipe", "-",
+			"-quality", "40", "-frames:v", "1450", "-c:v", "webp", "-f", "image2pipe", "-",
 		}
 
 		resizedImage, err = runFFmpeg(ctx, ffmpegArgs)
